@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Figuras de coleccion 3D</title>
+    <link rel="stylesheet" href="./assets/css/styles.css" />
+
+    <!-- Tipografía moderna -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <!-- TOGGLE MODO OSCURO -->
+    <div class="toggle-tema" id="toggleTema">🌙</div>
+
+    <!-- NAV -->
+    <nav>
+      <ul class="menu-centro">
+        <li><a href="./index.html">Inicio</a></li>
+
+        <li class="dropdown">
+          <button class="dropdown-toggle" id="btnDropdown">Figuras 3D ▾</button>
+          <ul class="submenu" id="submenuFiguras">
+            <li><a href="./anime.html">Anime</a></li>
+            <li><a href="./marvel.html">Marvel Comics</a></li>
+            <li><a href="./dc.html">DC Comics</a></li>
+            <li><a href="./cinefilos.html">Cinéfilos</a></li>
+          </ul>
+        </li>
+
+        <li><a href="./contacto.html">Contacto</a></li>
+      </ul>
+
+      <ul class="carro">
+        <li>
+          <a href="./carro.html" id="icono-carro">
+            🛒 <span id="contador-carro">0</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- HERO -->
+    <header class="hero">
+      <h1>Figuras de Colección Impresas en 3D</h1>
+      <p>
+        Modelos premium, personalizados y creados con resina de alta definición.
+      </p>
+    </header>
+
+    <!-- PRODUCTOS -->
+    <section class="contenedor-productos categoria">
+      <!-- PRODUCTO 1 -->
+      <div class="tarjeta">
+        <img src="./assets/img/anime.jpg" alt="anime" />
+        <h3>Oferta - Anime</h3>
+        <p class="precio">$11.990</p>
+        <button
+          class="boton-compra"
+          onclick="agregarAlCarro('Oferta - Anime',11990)"
+        >
+          Agregar al Carro
+        </button>
+      </div>
+
+      <!-- PRODUCTO 2 -->
+      <div class="tarjeta">
+        <img src="./assets/img/marvel.png" alt="marvel" />
+        <h3>Oferta - Marvel Comics</h3>
+        <p class="precio">$14.990</p>
+        <button
+          class="boton-compra"
+          onclick="agregarAlCarro('Oferta - Marvel Comics',14990)"
+        >
+          Agregar al Carro
+        </button>
+      </div>
+
+      <!-- PRODUCTO 3 -->
+      <div class="tarjeta">
+        <img src="./assets/img/dc.webp" alt="dc" />
+        <h3>Oferta - DC Comics</h3>
+        <p class="precio">$10.990</p>
+        <button
+          class="boton-compra"
+          onclick="agregarAlCarro('Oferta - DC Comics',10990)"
+        >
+          Agregar al Carro
+        </button>
+      </div>
+
+      <!-- PRODUCTO 4 -->
+      <div class="tarjeta">
+        <img src="./assets/img/cine.jpg" alt="cine " />
+        <h3>Oferta - Cinéfilos</h3>
+        <p class="precio">$12.990</p>
+        <button
+          class="boton-compra"
+          onclick="agregarAlCarro('Oferta - Cinéfilos',12990)"
+        >
+          Agregar al Carro
+        </button>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="footer-contenido">
+        <div class="footer-col">
+          <h4>Tienda</h4>
+          <p>Figuras de colección impresas en 3D</p>
+          <p>Calidad premium & edición limitada</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Contacto</h4>
+          <p>Email: contacto@figuras3d.cl</p>
+          <p>WhatsApp: +56 9 1234 5678</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Síguenos</h4>
+          <div class="footer-rrss">
+            <a href="#" aria-label="Instagram" class="rrss">
+              <img src="./assets/img/instagram.svg" alt="Instagram" />
+            </a>
+
+            <a href="#" aria-label="Facebook" class="rrss">
+              <img src="./assets/img/facebook.svg" alt="Facebook" />
+            </a>
+
+            <a href="#" aria-label="WhatsApp" class="rrss">
+              <img src="./assets/img/whatsapp.svg" alt="WhatsApp" />
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-copy">
+        <p>Tienda de Figuras 3D © 2025 · Coleccionables premium</p>
+      </div>
+    </footer>
+
+    <script src="./assets/js/app.js"></script>
+  </body>
+</html>

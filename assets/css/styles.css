@@ -1,0 +1,520 @@
+/* ========================================================= */
+/*                    ESTILOS GENERALES                      */
+/* ========================================================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  background: var(--color-fondo);
+  color: var(--color-texto);
+  transition: 0.3s ease;
+}
+
+/* ================== VARIABLES TEMA ================== */
+
+:root {
+  --color-fondo: #f5f5f5;
+  --color-texto: #1a1a1a;
+  --color-primario: #ff4700;
+  --color-card: #ffffff;
+  --color-border: #dddddd;
+}
+
+body.dark {
+  --color-fondo: #181818;
+  --color-texto: #e5e5e5;
+  --color-primario: #ff7a3d;
+  --color-card: #242424;
+  --color-border: #333333;
+}
+
+/* ================== TOGGLE TEMA ================== */
+
+.toggle-tema {
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  z-index: 1000;
+  cursor: pointer;
+
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  
+  border-radius: 8px;
+  padding: 8px 10px;
+}
+
+.toggle-tema:hover {
+  transform: scale(1.1);
+}
+
+/* ================== TOGGLE MODO CLARO ================== */
+body:not(.dark) .toggle-tema {
+  background: #f0eae6; /* color claro pero no blanco */
+}
+
+/* ========================================================= */
+/*        FIX DEFINITIVO TOGGLE MODO CLARO                   */
+/* ========================================================= */
+
+body:not(.dark) .toggle-tema {
+  background: #f0eae6 !important;
+}
+
+
+/* ========================================================= */
+/*                        NAVBAR                             */
+/* ========================================================= */
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+  background: var(--color-card);
+  border-bottom: 1px solid var(--color-border);
+  position: relative;
+  top: 0;
+  z-index: 999;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+}
+
+nav a,
+.dropdown-toggle {
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: var(--color-texto);
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+nav a:hover,
+.dropdown-toggle:hover {
+  color: var(--color-primario);
+}
+
+.menu-centro {
+  margin: 0 auto;
+}
+
+.carro {
+  margin-left: auto;
+}
+
+/* ========================================================= */
+/*              DROPDOWN (VERSIÓN FINAL FUNCIONAL)           */
+/* ========================================================= */
+
+.dropdown {
+  position: relative;
+}
+
+/* === SUBMENU FUNCIONAL === */
+.submenu {
+  position: absolute;
+  top: 38px;
+  left: 0;
+  min-width: 180px;
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: 8px 0;
+
+  display: flex;
+  flex-direction: column;
+
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px);
+  transition: 0.25s ease;
+
+  z-index: 999;
+}
+
+.submenu li a {
+  padding: 10px 15px;
+  display: block;
+}
+
+.submenu li a:hover {
+  background: var(--color-border);
+}
+
+/* estado activo por JS */
+.submenu.activo {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* ========================================================= */
+/* ❌ DROPDOWN ANTIGUO (HOVER) – OBSOLETO                     */
+/* Motivo: hover no funciona bien en mobile                  */
+/* ========================================================= */
+/*
+.dropdown:hover .submenu {
+  display: flex;
+}
+*/
+
+/* ========================================================= */
+/*                     HERO                                  */
+/* ========================================================= */
+/*
+.hero {
+  text-align: center;
+  padding: 80px 20px;
+  background: linear-gradient(135deg, var(--color-primario), #ffb38a);
+  color: white;
+}
+*/
+
+/* ========================================================= */
+/*                  HERO CON IMAGEN                          */
+/* ========================================================= */
+
+.hero {
+  position: relative;
+  padding: 120px 20px;
+  text-align: center;
+  color: white;
+
+  background: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)),
+    url("../img/hero-default.jpg") center / cover no-repeat;
+
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  /* 👇 CLAVE */
+  background-position: center top;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero h1 {
+  font-size: 3.2rem;
+  font-weight: 700;
+  margin-bottom: 18px;
+  letter-spacing: -1px;
+}
+
+.hero p {
+  max-width: 720px;
+  font-size: 1.15rem;
+  line-height: 1.6;
+  opacity: 0.95;
+}
+
+/* ========================================================= */
+/*               HERO RESPONSIVE                             */
+/* ========================================================= */
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 70px 20px;
+  }
+
+  .hero h1 {
+    font-size: 2.2rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
+}
+
+/* ========================================================= */
+/*                 PRODUCTOS / TARJETAS                      */
+/* ========================================================= */
+
+/* === GRID FINAL ACTIVO === */
+.contenedor-productos {
+  max-width: 1200px;
+  margin: 60px auto;
+  padding: 0 20px;
+
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 25px;
+}
+
+/* === TARJETA FINAL === */
+.tarjeta {
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.tarjeta:hover {
+  transform: translateY(-5px);
+}
+
+/* === IMÁGENES UNIFICADAS === */
+.tarjeta img {
+  width: 100%;
+  height: 340px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+/* === CONTENIDO === */
+.tarjeta h3 {
+  margin: 10px 0 5px;
+}
+
+.precio {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: var(--color-primario);
+}
+
+.boton-compra {
+  margin-top: auto;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  background: var(--color-primario);
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.boton-compra:hover {
+  background: #d93f00;
+}
+
+/* ========================================================= */
+/* ❌ TARJETAS / GRID DUPLICADOS – OBSOLETOS                  */
+/* Motivo: sobrescritos por reglas finales                   */
+/* ========================================================= */
+/*
+.contenedor-productos {
+  display: grid;
+  padding: 40px 10%;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+*/
+
+/* ========================================================= */
+/*                  CATEGORÍAS                               */
+/* ========================================================= */
+
+.categoria .tarjeta img {
+  height: 310px;
+}
+
+/* ========================================================= */
+/*                   RESPONSIVE GRID                         */
+/* ========================================================= */
+
+@media (max-width: 1100px) {
+  .contenedor-productos {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .contenedor-productos {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ========================================================= */
+/*              DROPDOWN RESPONSIVE FIX REAL                 */
+/* ========================================================= */
+/*
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column;
+    gap: 15px;
+    padding: 20px;
+  }
+
+  nav ul {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .submenu {
+    position: relative;
+    top: 0;
+    transform: none;
+    border-radius: 8px;
+    margin-top: 10px;
+  }
+}
+*/
+
+/* ========================================================= */
+/*                       FOOTER NUEVO                        */
+/* ========================================================= */
+
+footer {
+  background: var(--color-card);
+  border-top: 1px solid var(--color-border);
+  padding: 40px 20px;
+}
+
+.footer-contenido {
+  max-width: 1200px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 30px;
+  text-align: center;
+}
+
+.footer-col h4 {
+  margin-bottom: 10px;
+  font-size: 1.1rem;
+}
+
+.footer-col p {
+  font-size: 0.95rem;
+  opacity: 0.85;
+}
+
+.footer-rrss {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  font-size: 1.6rem;
+}
+
+.footer-rrss a {
+  text-decoration: none;
+  transition: transform 0.2s ease;
+}
+
+.footer-rrss a:hover {
+  transform: scale(1.2);
+}
+
+.footer-copy {
+  margin-top: 30px;
+  font-size: 0.85rem;
+  opacity: 0.7;
+}
+
+/* ========================================================= */
+/*           FIX NAVBAR MOBILE (NO ROMPE DESKTOP)            */
+/* ========================================================= */
+
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 15px;
+  }
+
+  /* Menú principal */
+  .menu-centro {
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  /* Carro centrado abajo */
+  .carro {
+    margin-left: 0;
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+  }
+
+  /* Dropdown */
+  .dropdown {
+    width: 100%;
+    text-align: center;
+  }
+
+  /* Submenu mobile */
+  .submenu {
+    position: static; /* CLAVE */
+    transform: none;
+    width: 100%;
+    margin-top: 8px;
+    border-radius: 8px;
+  }
+}
+
+.footer-rrss img {
+  width: 28px;
+  height: 28px;
+  transition: transform 0.2s ease;
+}
+
+.footer-rrss img:hover {
+  transform: scale(1.2);
+}
+
+/* ========================================================= */
+/*              FORMULARIO CONTACTO (FIX FINAL)              */
+/* ========================================================= */
+
+.formulario-contacto {
+  max-width: 600px;
+  margin: 60px auto;
+  padding: 30px;
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+}
+
+.formulario-contacto h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.formulario-contacto form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.formulario-contacto label {
+  font-weight: 600;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.formulario-contacto input,
+.formulario-contacto textarea {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid var(--color-border);
+  background: var(--color-fondo);
+  color: var(--color-texto);
+  font-family: inherit;
+}
+
+.formulario-contacto textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
